@@ -25,19 +25,17 @@ jokes = [
 
 
 def tell_joke(category):
+    matching = next((joke for joke in jokes if joke["category"].lower() == category.lower()), None)
 
-    matching = [j for j in jokes if j["category"] == category]
-
-    if not matching:
-        print("That’s not a valid category.")
+    if matching is not None:
+        input(matching["setup"])
+        input(matching["who"])
+        print(matching["punchline"])
+    else:
+        print("Thats not a valid category.")
         return
 
     
-    joke = random.choice(matching)
-
-    input(joke["setup"])
-    input(joke["who"])
-    print(joke["punchline"])
 
 
 
